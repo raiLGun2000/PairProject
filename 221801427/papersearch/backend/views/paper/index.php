@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\PaperSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Papers';
+$this->title = '论文列表';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paper-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Paper', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加论文', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'abstract:ntext',
             'conference',
             'keywords:ntext',
-            'release_time',
+            'release_time:date',
             //'link',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -47,6 +47,10 @@ class PaperSearch extends Paper
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            //'pagination' => ['pageSize'=>30],
+            'sort'=>[
+                'attributes'=>['id','title','conference','release_time'],
+            ],
         ]);
 
         $this->load($params);
