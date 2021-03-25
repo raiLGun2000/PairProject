@@ -17,6 +17,7 @@ use Yii;
  */
 class Paper extends \yii\db\ActiveRecord
 {
+    private $_oldKeywords;
     /**
      * @inheritdoc
      */
@@ -52,4 +53,23 @@ class Paper extends \yii\db\ActiveRecord
             'link' => '论文链接',
         ];
     }
+
+    public function  afterFind()
+    {
+        parent::afterFind();
+        $this->_oldKeywords = $this->keywords;
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        Keyword::updateFrequency($this->_oldKeywords, $this->keywords);
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        Keyword::updateFrequency($this->keywords, '');
+    }
+
 }
