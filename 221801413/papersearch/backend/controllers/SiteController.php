@@ -13,7 +13,7 @@ use common\models\LoginForm;
 class SiteController extends Controller
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -42,7 +42,7 @@ class SiteController extends Controller
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function actions()
     {
@@ -53,21 +53,11 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return string
-     */
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -78,19 +68,12 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            $model->password = '';
-
             return $this->render('login', [
                 'model' => $model,
             ]);
         }
     }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
