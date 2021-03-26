@@ -126,4 +126,16 @@ class PaperController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionDetail($id)
+    {
+        $model = $this->findModel($id);
+        $keywords=Keyword::findKeywordWeights();
+        
+        return $this->render('detail',[
+            'model'=>$model,
+            'keywords'=>$keywords,
+        ]);
+
+    }
 }

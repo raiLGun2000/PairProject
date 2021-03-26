@@ -16,17 +16,17 @@ use frontend\components\TagsCloudWidget;
 
     <div class="row">
 
-        <div class="col-md-9">
+        <div class="col-md-8">
+
             <ol class="breadcrumb">
                 <li><a href="<?= Yii::$app->homeUrl;?>">首页</a></li>
-                <li>文章列表</li>
-
+                <li>论文列表</li>
             </ol>
 
             <div class="searchbox">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查找文章（
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查找论文（
                         <?= Paper::find()->count();?>
                         ）
                     </li>
@@ -35,10 +35,9 @@ use frontend\components\TagsCloudWidget;
                             <div class="form-group" style="margin-left:15px">
                                 <input type="text" class="form-control" name="PaperSearch[title]" id="w0input" placeholder="按标题">
                                 <input type="text" class="form-control" name="PaperSearch[abstract]" id="w0input" placeholder="按摘要">
-                                <input type="text" class="form-control" name="PaperSearch[conference]" id="w0input" placeholder="按会议">
                                 <input type="text" class="form-control" name="PaperSearch[keywords]" id="w0input" placeholder="按关键词">
                             </div>
-                            <button type="submit" class="btn btn-default" style="width:75px;margin-left:5px">搜索</button>
+                            <button type="submit" class="btn btn-default" style="width:150px;margin-left:5px">搜索</button>
                         </form>
                     </li>
                 </ul>
@@ -55,11 +54,10 @@ use frontend\components\TagsCloudWidget;
                     'prevPageLabel'=>Yii::t('app','上一页'),
                 ],
             ])?>
-
         </div>
-        <div class="col-md-3">
-            <div id="he-plugin-standard"></div>
 
+        <div class="col-md-4">
+        
             <div class="tagcloudbox">
                 <ul class="list-group">
                     <li class="list-group-item">
