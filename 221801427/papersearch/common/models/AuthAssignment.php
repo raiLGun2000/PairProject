@@ -9,14 +9,14 @@ use Yii;
  *
  * @property string $item_name
  * @property string $user_id
- * @property int|null $created_at
+ * @property integer $created_at
  *
  * @property AuthItem $itemName
  */
 class AuthAssignment extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function tableName()
     {
@@ -24,7 +24,7 @@ class AuthAssignment extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
@@ -32,13 +32,12 @@ class AuthAssignment extends \yii\db\ActiveRecord
             [['item_name', 'user_id'], 'required'],
             [['created_at'], 'integer'],
             [['item_name', 'user_id'], 'string', 'max' => 64],
-            [['item_name', 'user_id'], 'unique', 'targetAttribute' => ['item_name', 'user_id']],
             [['item_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthItem::className(), 'targetAttribute' => ['item_name' => 'name']],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attributeLabels()
     {
@@ -50,8 +49,6 @@ class AuthAssignment extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[ItemName]].
-     *
      * @return \yii\db\ActiveQuery
      */
     public function getItemName()

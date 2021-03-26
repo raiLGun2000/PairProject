@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "paper".
@@ -70,6 +71,31 @@ class Paper extends \yii\db\ActiveRecord
     {
         parent::afterDelete();
         Keyword::updateFrequency($this->keywords, '');
+    }
+
+    public function getUrl()
+    {
+        return Yii::$app->urlManager->createUrl(
+            ['paper/detail','id'=>$this->id,'title'=>$this->title]);
+    }
+
+    public function getBeginning($length=288)
+    {
+        $tmpStr = strip_tags($this->abstract);
+        $tmpLen = mb_strlen($tmpStr);
+
+        $tmpStr = mb_substr($tmpStr,0,$length,'utf-8');
+        return $tmpStr.($tmpLen>$length?'...':'');
+    }
+
+    public function  getTagLinks()
+    {
+        $links=array();
+        foreach(Keyword::string2array($this->keywords) as $tag)
+        {
+            $links[]=Html::a(Html::encode($tag),array('paper/index','PaperSearch[keywords]'=>$tag));
+        }
+        return $links;
     }
 
 }
