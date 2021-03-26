@@ -31,6 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'keywords:ntext',
             'release_time:date',
             //'link',
+            [
+                'attribute' => 'link',
+                'label' => '链接',
+                'value' => function ($model) {
+                    return Html::a($model->link, "//{$model->link}", ['target' => '_blank']);
+                },
+                'format' => 'raw',
+            ],
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

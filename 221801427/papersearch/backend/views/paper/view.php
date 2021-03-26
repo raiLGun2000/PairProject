@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'release_time:date',
             'link:html',
         ],
+        
     ]) ?>
 
 </div>
