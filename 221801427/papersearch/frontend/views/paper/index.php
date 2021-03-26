@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\ListView;
 use common\models\Paper;
+use frontend\components\TagsCloudWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\PaperSearch */
@@ -57,7 +58,18 @@ use common\models\Paper;
 
         </div>
         <div class="col-md-3">
-            右侧内容
+            <div id="he-plugin-standard"></div>
+
+            <div class="tagcloudbox">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Top10关键词
+                    </li>
+                    <li class="list-group-item">
+                        <?= TagsCloudWidget::widget(['keywords'=>$keywords]);?>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

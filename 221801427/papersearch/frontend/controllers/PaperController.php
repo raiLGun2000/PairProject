@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use common\models\Keyword;
+
 /**
  * PaperController implements the CRUD actions for Paper model.
  */
@@ -35,12 +37,15 @@ class PaperController extends Controller
      */
     public function actionIndex()
     {
+        $keywords=Keyword::findKeywordWeights();
+
         $searchModel = new PaperSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'keywords'=>$keywords,
         ]);
     }
 
