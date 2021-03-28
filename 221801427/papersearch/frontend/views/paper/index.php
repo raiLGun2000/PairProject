@@ -34,7 +34,7 @@ use frontend\components\TagsCloudWidget;
                         <form class="form-inline" action="<?= Yii::$app->urlManager->createUrl(['paper/index']);?>" id="w0" method="get">
                             <div class="form-group" style="margin-left:15px">
                                 <input type="text" class="form-control" name="PaperSearch[title]" id="w0input" placeholder="按标题">
-                                <input type="text" class="form-control" name="PaperSearch[abstract]" id="w0input" placeholder="按摘要">
+                                <input type="text" class="form-control" name="PaperSearch[conference]" id="w0input" placeholder="按会议">
                                 <input type="text" class="form-control" name="PaperSearch[keywords]" id="w0input" placeholder="按关键词">
                             </div>
                             <button type="submit" class="btn btn-default" style="width:150px;margin-left:5px">搜索</button>

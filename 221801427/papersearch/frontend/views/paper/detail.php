@@ -26,14 +26,21 @@ use yii\helpers\Url;
 				<li class="active"><?= $model->title?></li>
 			</ol>
 			
-			<div class="post">
+			<div class="paper">
 
 				<div class="title">
 					<h2><a href="<?= $model->url;?>"><?= Html::encode($model->title);?></a></h2>
 				</div>
 
 			<br>
-			
+
+				<div class="origin">
+					<span class="glyphicon glyphicon-time" aria-hidden="true"></span><em><?= $model->release_time."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?></em>
+					<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><em><?= $model->conference;?></em>
+				</div>
+
+			<br>
+
 				<div class="content">
 					<?= $model->abstract;?>
 				</div>
@@ -43,6 +50,12 @@ use yii\helpers\Url;
 				<div class="nav">
 					<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
 					<?= implode(', ',$model->tagLinks);?>
+				</div>
+			
+			<br>
+			
+				<div class="content">
+					<span class="glyphicon glyphicon-link" aria-hidden="true"></span><em><?= $model->orgLink;?></em>
 				</div>
 
 			</div>

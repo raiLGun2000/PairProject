@@ -98,4 +98,9 @@ class Paper extends \yii\db\ActiveRecord
         return $links;
     }
 
+    public function  getOrgLink()
+    {
+        return Html::a($this->link, "//{$this->link}", ['target' => '_blank']);
+    }
+
 }
