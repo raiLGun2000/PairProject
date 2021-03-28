@@ -37,7 +37,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
       
-        ['label' => '关于', 'url' => ['/site/about']],
+        ['label' => '图表', 'url' => ['/site/about']],
         ['label' => '联系', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
