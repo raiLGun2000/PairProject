@@ -30,14 +30,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'suffix'=>'.html',
             'rules' => [
+                '<controller:\w+>/<id:\d+>'=>'<controller>/detail',
+                'paper'=>'paper/index',
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];
