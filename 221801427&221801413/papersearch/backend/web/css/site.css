@@ -10,7 +10,7 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container {
+.wrap>.container {
     padding: 70px 15px 20px;
 }
 
@@ -31,13 +31,35 @@ body {
     padding: 14px 24px;
 }
 
+.img-wall {
+    position: absolute;
+    top: 50px;
+    left: 188px;
+    z-index: -1;
+}
+
+.item {
+    opacity: 0.4;
+}
+
+.title {
+    text-align: center;
+    background: linear-gradient(to right, rgb(68, 255, 224), rgb(8, 124, 192), blue, rgb(112, 36, 184), purple, rgb(112, 36, 184), blue, rgb(8, 124, 192), rgb(68, 255, 224));
+    -webkit-background-clip: text;
+    /*背景颜色以文本方式剪切*/
+    -webkit-text-fill-color: transparent;
+}
+
 .not-set {
     color: #c55;
     font-style: italic;
 }
 
+
 /* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+
+a.asc:after,
+a.desc:after {
     position: relative;
     top: 1px;
     display: inline-block;
@@ -49,11 +71,13 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+    content: /*"\e113"*/
+    "\e151";
 }
 
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+    content: /*"\e114"*/
+    "\e152";
 }
 
 .sort-numerical a.asc:after {
@@ -95,17 +119,19 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+
 /* align the logout "link" (button in form) of the navbar */
-.nav > li > form {
+
+.nav>li>form {
     padding: 8px;
 }
 
 @media(max-width:768px) {
-	.nav li > form {
-	    padding: 3px;
-	}
+    .nav li>form {
+        padding: 3px;
+    }
 }
 
-.nav > li > form > button:hover {
+.nav>li>form>button:hover {
     text-decoration: none;
 }
