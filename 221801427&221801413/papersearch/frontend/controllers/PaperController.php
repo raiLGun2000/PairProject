@@ -28,6 +28,20 @@ class PaperController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+            'pageCache'=>[
+                'class'=>'yii\filters\PageCache',
+                'only'=>['index'],
+                'duration'=>600,
+                'variations'=>[
+                        Yii::$app->request->get('page'),
+                        Yii::$app->request->get('PaperSearch'),
+                ],
+                'dependency'=>[
+                        'class'=>'yii\caching\DbDependency',
+                        'sql'=>'select count(id) from paper',
+                ],
+            ],
         ];
     }
 
