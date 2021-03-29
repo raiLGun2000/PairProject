@@ -29,7 +29,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'PaperSearch',
-    	'brandOptions'=> ['style'=>'color:yellow;font-size:23px'],
+    	'brandOptions'=> ['style'=>'color:#bc56d1;font-size:23px'],
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

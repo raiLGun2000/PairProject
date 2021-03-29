@@ -34,7 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'conference',
             'keywords:ntext',
             'release_time:date',
-            'link:html',
+            [
+                'attribute' => 'link',
+                'label' => '链接',
+                'format' => ['url',['target' => '_blank']],
+            ],
         ],
         
     ]) ?>
