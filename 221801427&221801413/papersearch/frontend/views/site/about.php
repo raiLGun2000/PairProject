@@ -3,10 +3,19 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use common\models\Paper;
 
-$this->title = '三大顶会历年论文数据';
+$this->title = '三大顶会论文数据';
 $this->params['breadcrumbs'][] = $this->title;
 
+$Eccv2016 = Paper::find()->andFilterWhere(['like', 'conference', 'ECCV 2016'])->count();
+$Cvpr2016 = Paper::find()->andFilterWhere(['like', 'conference', 'CVPR2016'])->count();
+
+$Eccv2020 = Paper::find()->andFilterWhere(['like', 'conference', 'ECCV 2020'])->count();
+$Cvpr2020 = 486;
+
+$Eccv2018 = Paper::find()->andFilterWhere(['like', 'conference', 'ECCV 2018'])->count();
+$Cvpr2018 = Paper::find()->andFilterWhere(['like', 'conference', 'CVPR2018'])->count();
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -21,68 +30,72 @@ $this->params['breadcrumbs'][] = $this->title;
             $this->title = '图表样例';
             $this->params['breadcrumbs'][] = $this->title;
         ?>
-        <script type="text/javascript" src="http://cdn.highcharts.com.cn/highcharts/9.0.1/highcharts.js"></script>
+
+         <script type='text/javascript' src="http://cdn.highcharts.com.cn/highcharts/9.0.1/highcharts.js"></script>"
+
+
 
         <div class="site-about">
             <h1><?= Html::encode($this->title) ?></h1>
-            <div id="main" style="width: 900px;height:600px;"></div>
+            <div id="chart01" style="margin: 0 auto;width: 900px;height:600px;"></div>
+
         </div>
-        <script type="text/javascript" >
-            var chart = Highcharts.chart('main',{
-	chart: {
-		type: 'column'
-	},
-	title: {
-		text: '月平均降雨量'
-	},
-	subtitle: {
-		text: '数据来源: WorldClimate.com'
-	},
-	xAxis: {
-		categories: [
-			'一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
-		],
-		crosshair: true
-	},
-	yAxis: {
-		min: 0,
-		title: {
-			text: '降雨量 (mm)'
-		}
-	},
-	tooltip: {
-		// head + 每个 point + footer 拼接成完整的 table
-		headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		'<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-		footerFormat: '</table>',
-		shared: true,
-		useHTML: true
-	},
-	plotOptions: {
-		column: {
-			borderWidth: 0
-		}
-	},
-	series: [{
-		name: '东京',
-		data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-	}, {
-		name: '纽约',
-		data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-	}, {
-		name: '伦敦',
-		data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-	}, {
-		name: '柏林',
-		data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-	}]
-});
+
+        <script type="text/javascript">
+		    var ECCV2016 = parseInt("<?php echo $Eccv2016; ?>");
+			var CVPR2016 = parseInt("<?php echo $Cvpr2016; ?>");
+
+			var ECCV2020 = parseInt("<?php echo $Eccv2020; ?>");
+			var CVPR2020 = parseInt("<?php echo $Cvpr2020; ?>");
+
+			var ECCV2018 = parseInt("<?php echo $Eccv2018; ?>");
+			var CVPR2018 = parseInt("<?php echo $Cvpr2018; ?>");
+            var chart = Highcharts.chart('chart01',{
+				chart: {
+					type: 'column'
+				},
+				title: {
+					text: '2016、2018、2020ECCV与CVPR两大顶会历年论文篇数'
+				},
+				xAxis: {
+					categories: [
+					'2014','2016','2018'
+					],
+					crosshair: true
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: '论文篇数'
+					}
+				},
+				tooltip: {
+					// head + 每个 point + footer 拼接成完整的 table
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					'<td style="padding:0"><b>{point.y} 篇数</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						borderWidth: 0
+					}
+				},
+				series: [{
+					name: 'ECCV',
+					data: [ECCV2016, ECCV2018,ECCV2020]
+				}, 
+				{
+					name: 'CVPR',
+					data: [CVPR2016,CVPR2018,CVPR2020]
+				}]
+			});
         </script>
         
     
        
     </div>
 
-    <code><?= __FILE__ ?></code>
 </div>
