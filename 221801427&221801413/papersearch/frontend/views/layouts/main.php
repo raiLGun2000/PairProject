@@ -29,7 +29,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'PaperSearch',
-    	'brandOptions'=> ['style'=>'color:yellow;font-size:23px'],
+    	'brandOptions'=> ['style'=>'color:#bc56d1;font-size:23px'],
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,7 +37,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
       
-        ['label' => '关于', 'url' => ['/site/about']],
+        ['label' => '图表', 'url' => ['/site/about']],
         ['label' => '联系', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {

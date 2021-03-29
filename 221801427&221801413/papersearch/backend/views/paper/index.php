@@ -21,27 +21,55 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout'=>"{summary}{items}{pager}<div class='text-right tooltip-demo'></div>",
+        'summary' => "  显示 {totalCount} 篇论文中的 第 {begin} 到 {end} 篇 ",
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ' - '],
+        'pager' => [
+            'prevPageLabel' => '上一页',
+            'nextPageLabel' => '下一页',
+            'firstPageLabel' => '首页',
+            'lastPageLabel' => '末页',
+            'maxButtonCount' => 10,
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'title:ntext',
-            //'abstract:ntext',
+            //'title:ntext',
+            [
+                'attribute' => 'title',
+                'headerOptions' => ['width' => '20%'],
+                'value' => function ($model) {
+                    return $model->summary;
+                },
+                'format' => 'ntext',
+            ],
             'conference',
-            'keywords:ntext',
+            //'keywords:ntext',
+            [
+                'attribute' => 'keywords',
+                'headerOptions' => ['width' => '20%'],
+                'value' => function ($model) {
+                    if($model->short)
+                    return $model->short;
+                },
+                'format' => 'ntext',
+            ],
             'release_time:date',
             //'link',
             [
-                'attribute' => 'link',
-                'label' => '链接',
+                'attribute' => 'abstract',
+                'headerOptions' => ['width' => '20%'],
                 'value' => function ($model) {
-                    return Html::a($model->link, "//{$model->link}", ['target' => '_blank']);
+                    return $model->beginning2;
                 },
-                'format' => 'raw',
+                'format' => 'ntext',
+            ],
+            ['class' => 'yii\grid\ActionColumn',
+            'contentOptions' => ['style' => 'width:10%;'],
+            'header'=>'操作',
             ],
 
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
