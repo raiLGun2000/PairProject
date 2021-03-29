@@ -42,6 +42,18 @@ class PaperController extends Controller
                         'sql'=>'select count(id) from paper',
                 ],
             ],
+
+            'httpCache'=>[
+                'class'=>'yii\filters\HttpCache',
+                'only'=>['detail'],
+                'etagSeed'=>function ($action,$params) {
+                    $paper = $this->findModel(Yii::$app->request->get('id'));
+                    return serialize([$paper->title,$paper->abstract]);
+                },
+                
+                'cacheControlHeader' => 'public,max-age=600',
+                
+        ],
         ];
     }
 
