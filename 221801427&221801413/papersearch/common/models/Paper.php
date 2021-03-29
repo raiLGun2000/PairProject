@@ -88,6 +88,32 @@ class Paper extends \yii\db\ActiveRecord
         return $tmpStr.($tmpLen>$length?'...':'');
     }
 
+    public function getBeginning2($length=40)
+    {
+        $tmpStr = strip_tags($this->abstract);
+        $tmpLen = mb_strlen($tmpStr);
+
+        $tmpStr = mb_substr($tmpStr,0,$length,'utf-8');
+        return $tmpStr.($tmpLen>$length?'...':'');
+    }
+
+    public function getSummary($length=40)
+    {
+        $tmpStr = strip_tags($this->title);
+        $tmpLen = mb_strlen($tmpStr);
+
+        $tmpStr = mb_substr($tmpStr,0,$length,'utf-8');
+        return $tmpStr.($tmpLen>$length?'...':'');
+    }
+
+    public function getShort($length=40)
+    {
+        $tmpStr = strip_tags($this->keywords);
+        $tmpLen = mb_strlen($tmpStr);
+        $tmpStr = mb_substr($tmpStr,0,$length,'utf-8');
+        return $tmpStr.($tmpLen>$length?'...':'');
+    }
+
     public function  getTagLinks()
     {
         $links=array();
