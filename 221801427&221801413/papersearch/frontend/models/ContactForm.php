@@ -57,4 +57,14 @@ class ContactForm extends Model
             ->setTextBody($this->body)
             ->send();
     }
+
+    public function attributeLabel(){
+        return [
+            'name'=>'姓名',
+            'email'=>'邮箱',
+            'subject'=>'问题',
+            'body'=>'内容',
+            'verifyCode'=>'验证码',
+        ];
+    }
 }
