@@ -34,11 +34,12 @@ class PaperController extends Controller
                 'rules' =>
                     [
                         [
-                            'actions' => ['index', 'create', 'error'],
+                            'actions' => ['index', 'view'],
                             'allow' => true,
+                            'roles' => ['?'],
                         ],
                         [
-                            'actions' => ['delete', 'update', 'view'],
+                            'actions' => ['view', 'index', 'create','update','delete'],
                             'allow' => true,
                             'roles' => ['@'],
                         ],
@@ -83,11 +84,11 @@ class PaperController extends Controller
     public function actionCreate()
     {
 
+        $model = new Paper();
+
         //if(!Yii::$app->user->can('createPaper')){
             //throw new ForbiddenHttpException('对不起，你没有进行该操作的权限。');
         //}
-
-        $model = new Paper();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -134,9 +135,9 @@ class PaperController extends Controller
      */
     public function actionDelete($id)
     {
-        if(!Yii::$app->user->can('deletePaper')){
-            throw new ForbiddenHttpException('对不起，你没有进行该操作的权限。');
-        }
+        //if(!Yii::$app->user->can('deletePaper')){
+            //throw new ForbiddenHttpException('对不起，你没有进行该操作的权限。');
+        //}
 
         $this->findModel($id)->delete();
 

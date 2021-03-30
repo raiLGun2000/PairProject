@@ -8,6 +8,8 @@ use common\models\PaperSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\rest\Serializer;
 
 use common\models\Keyword;
 
@@ -27,6 +29,23 @@ class PaperController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+
+            'access' =>[
+                'class' => AccessControl::className(),
+                'rules' =>
+                    [
+                        [
+                            'actions' => ['index'],
+                            'allow' => true,
+                            'roles' => ['?'],
+                        ],
+                        [
+                            'actions' => ['index', 'detail'],
+                            'allow' => true,
+                            'roles' => ['@'],
+                        ],
+                    ],
             ],
 
             'pageCache'=>[
@@ -164,4 +183,5 @@ class PaperController extends Controller
         ]);
 
     }
+
 }
