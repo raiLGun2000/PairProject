@@ -90,6 +90,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+            Yii::$app->cache->flush();
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -104,6 +105,8 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
+
+        Yii::$app->cache->flush();
 
         return $this->goHome();
     }
