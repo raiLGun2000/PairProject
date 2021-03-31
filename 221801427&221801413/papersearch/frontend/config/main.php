@@ -30,7 +30,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        
+        //url美化，云服务器端该部分代码已注释掉        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
